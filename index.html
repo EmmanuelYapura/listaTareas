@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="container-descripcion">
+            <h1>Lista de tareas</h1>
+            <!-- Input de Tareas -->
+            <div class="tareaList">
+                <form>
+                    <input class="input-tarea titulo-tarea" type="text" placeholder="Titulo tarea...">
+                    <input class="input-tarea descripcion-tarea" type="text" placeholder="Descripcion tarea...">
+                    <button class="btn-add">agregar</button>
+                </form>
+            </div>
+            <!-- aca se maneja la prioridad -->
+            <div class="container-options">
+                <div class="checkbox">
+                    Realizada <input type="checkbox" name="marcado" id="marcado">
+                </div>
+                <div class="options">
+                    <p class="text-prioridad">Prioridad</p>
+                    <select>
+                        <option value="baja #F8CBA6">Baja</option>
+                        <option value="normal #fdb070">Normal</option>
+                        <option value="alta #fa801c">Alta</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- Aca deberia tener los dos contenedores -->
+        <div class="container-tareas">
+            <div class="incompletas">
+                <div class="prioridad-baja">
+                    <h4 class="text-tareas">Priridad Baja</h4>
+                    <div class="li-container">
+                        <ul class="p-baja">
+                        </ul>
+                    </div>
+                    <div class="empty-baja">
+                        <p>No tienes tareas pendientes.</p>
+                    </div>
+                </div>
+                <div class="prioridad-normal">
+                    <h4 class="text-tareas">Priridad Normal</h4>
+                    <div class="li-container">
+                        <ul class="p-normal">
+                        </ul>
+                    </div>
+                    <div class="empty-normal">
+                        <p>No tienes tareas pendientes.</p>
+                    </div>
+                </div>
+                <div class="prioridad-alta">
+                    <h4 class="text-tareas">Priridad Alta</h4>
+
+                    <div class="li-container">
+                        <ul class="p-alta">
+                        </ul>
+                    </div>
+                    <div class="empty-alta">
+                        <p>No tienes tareas pendientes.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

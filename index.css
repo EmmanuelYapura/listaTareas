@@ -1,0 +1,251 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1.2;
+    font-family: Roboto;
+    background-image: url('/madera_4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: black;
+}
+
+h1{
+    color: rgb(20, 34, 34);
+    text-align: center;
+}
+
+.container{
+    margin: 70px 150px;
+    padding: 25px;
+    display: flex;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background-color: #F0EEED;
+}
+
+.tareaList{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.input-tarea{
+    padding: 15px;
+    margin-bottom: 10px;
+    outline: none;
+    border: none;
+}
+
+.container-descripcion{
+    width: 30%;
+    margin: 0 auto;
+}
+
+.container-tareas{
+    width: 65%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.incompletas{
+    width: 90%;
+}
+
+ul{
+    padding: 0;
+}
+
+li{
+    display: flex; 
+    justify-content: space-between;
+    margin-bottom: 7px;
+    word-break: break-all;
+    border-bottom: 1px solid black;
+}
+
+.contenedor-li{
+    display: flex;
+    flex-direction: column;
+}
+
+li p{
+    color: black;
+    padding-left: 10px;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+li h4{
+    margin: 8px;
+    font-size: 21px;
+}
+
+.btn-add{
+    margin: 5px auto;
+    padding: 5px;
+    width: 120px;
+    background-color: #F8CBA6;
+    border-radius: 10px;
+    border: none;
+    color: black;
+    font-family: fantasy;
+    font-size: 1.2rem;
+}
+
+.empty{
+    color: darkslategrey;
+    text-align: center;
+}
+
+.btn-delete{
+    padding: 4px 10px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    align-self: self-start;
+}
+
+.btn-delete:hover{
+    color: black;
+    cursor: pointer;
+}
+
+.btn-add:hover{
+    cursor: pointer;
+}
+
+.container-options{
+    display: flex;
+    justify-content: space-around;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+}
+
+.text-prioridad{
+    padding: 0 12px;
+}
+
+.options{
+    display: flex;
+    align-items: center;
+}
+
+select{
+    width: 85px;
+    padding-left: 5px;
+}
+
+.marcado{
+    text-decoration: line-through;
+}
+
+#marcado{
+    margin-left: 10px;
+}
+
+.text-tareas{
+    font-size: 24px;
+    margin: 20px 0;
+    color: #cc9364;
+    border-bottom: 1px solid #cc9364;
+}
+
+@media (max-width: 600px){
+
+    .container{
+        margin: 30px;
+        padding: 0;
+        flex-direction: column;
+    }
+    
+    .tareaList{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .input-tarea{
+        padding: 15px;
+    }
+    
+    .container-descripcion{
+        width: 80%;
+    }
+    
+    .container-tareas{
+        width: 92%;
+        margin-top: 2px;
+    }
+    
+    .incompletas{
+        width: 100%;
+        margin-left: 33px;
+    }
+    
+    li p{
+        font-size: 14px;
+    }
+    
+    li h4{
+        margin: 5px;
+        font-size: 19px;
+    }
+    
+    .btn-add{
+        width: 125px;
+        border-radius: 10px;
+    }
+    
+    .empty{
+        color: darkslategrey;
+        text-align: center;
+    }
+    
+    .btn-delete{
+        padding: 2px 8px;
+        font-size: 1.2rem;
+    }
+    
+    .container-options{
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .checkbox{
+        font-size: 19px;
+    }
+    
+    .text-prioridad{
+        font-size: 19px;
+        padding: 0 14px;
+    }
+    
+    .marcado{
+        text-decoration: line-through;
+    }
+    
+    #marcado{
+        margin-left: 10px;
+    }
+    
+    .text-tareas{
+        font-size: 25px;
+        margin: 10px 0;
+    }
+}
