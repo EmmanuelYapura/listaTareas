@@ -4,7 +4,7 @@ body{
     font-size: 18px;
     line-height: 1.2;
     font-family: Roboto;
-    background-image: url('/madera_4.jpg');
+    background-image: url('./madera_4.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     color: black;
