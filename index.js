@@ -15,20 +15,25 @@ addBtn.addEventListener('click', (e) => {
 
     if(titleText != "" && text != ""){
         const li = document.createElement("li");
-        const h = document.createElement('h4');
-        const p = document.createElement("p");
-        const div = document.createElement('div');
-
         li.style.backgroundColor = colorLi;
+
+        const h = document.createElement('h4');
         h.textContent = titleText;
+
+        const p = document.createElement("p");
         p.textContent = text;
+
+        const div = document.createElement('div');
         div.classList.add('contenedor-li');
+
         div.appendChild(h);
         div.appendChild(p);
 
         li.appendChild(div);
+
         const $padre = document.querySelector(`.p-${prioridadTarea}`);
         $padre.appendChild(li);
+
         const empty = document.querySelector(`.empty-${prioridadTarea}`);
         li.appendChild(addDeleteBtn($padre,li,empty,prioridadTarea));
 
@@ -41,7 +46,7 @@ addBtn.addEventListener('click', (e) => {
 
         li.addEventListener('click', () => {
             p.classList.toggle('marcado');
-        }) ;
+        });
 
         tituloTarea.value = "";
         descripcionTarea.value = "";
@@ -54,13 +59,12 @@ function addDeleteBtn(padre,hijo,empty,prioridadTarea) {
     button.textContent = 'x';
     button.classList.add('btn-delete');
 
-    button.addEventListener('click', (e) => {
+    button.addEventListener('click', () => {
         padre.removeChild(hijo);
-        const eliminada = document.querySelector('.eliminada');
-        const cantNodos = document.querySelectorAll(`.p-${prioridadTarea} li`)
+        const cantNodos = document.querySelectorAll(`.p-${prioridadTarea} li`);
 
         if (cantNodos.length === 0) {
-            empty.style.display = "block"
+            empty.style.display = "block";
         }
     })
 
