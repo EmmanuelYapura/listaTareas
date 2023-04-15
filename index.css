@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     padding: 0;
     font-size: 18px;
@@ -10,12 +10,12 @@ body{
     color: black;
 }
 
-h1{
+h1 {
     color: rgb(20, 34, 34);
     text-align: center;
 }
 
-.container{
+.container {
     margin: 70px 150px;
     padding: 25px;
     display: flex;
@@ -24,58 +24,62 @@ h1{
     background-color: #F0EEED;
 }
 
-.tareaList{
+.tareaList {
     margin-left: auto;
     margin-right: auto;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
-    
 }
 
-.input-tarea{
+.botones{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.input-tarea {
     padding: 15px;
     margin-bottom: 10px;
     outline: none;
     border: none;
 }
 
-.container-descripcion{
+.container-descripcion {
     width: 30%;
     margin: 0 auto;
 }
 
-.container-tareas{
+.container-tareas {
     width: 65%;
     margin-top: 10px;
     display: flex;
     justify-content: space-around;
 }
 
-.incompletas{
+.incompletas {
     width: 90%;
 }
 
-ul{
+ul {
     padding: 0;
 }
 
-li{
-    display: flex; 
+li {
+    display: flex;
     justify-content: space-between;
     margin-bottom: 7px;
     word-break: break-all;
     border-bottom: 1px solid black;
 }
 
-.contenedor-li{
+.contenedor-li {
     display: flex;
     flex-direction: column;
 }
 
-li p{
+li p {
     color: black;
     padding-left: 10px;
     width: 100%;
@@ -83,12 +87,12 @@ li p{
     margin-bottom: 5px;
 }
 
-li h4{
+li h4 {
     margin: 8px;
     font-size: 21px;
 }
 
-.btn-add{
+.btn-add {
     margin: 5px auto;
     padding: 5px;
     width: 120px;
@@ -100,12 +104,12 @@ li h4{
     font-size: 1.2rem;
 }
 
-.empty{
+.empty {
     color: darkslategrey;
     text-align: center;
 }
 
-.btn-delete{
+.btn-delete {
     padding: 4px 10px;
     background-color: transparent;
     border: none;
@@ -114,138 +118,215 @@ li h4{
     align-self: self-start;
 }
 
-.btn-delete:hover{
+.btn-delete:hover {
     color: black;
     cursor: pointer;
 }
 
-.btn-add:hover{
+.btn-add:hover {
     cursor: pointer;
 }
 
-.container-options{
+.container-options {
     display: flex;
     justify-content: space-around;
 }
 
-.checkbox{
+.checkbox {
     display: flex;
     align-items: center;
 }
 
-.text-prioridad{
+.text-prioridad {
     padding: 0 12px;
 }
 
-.options{
+.options {
     display: flex;
     align-items: center;
 }
 
-select{
+select {
     width: 85px;
     padding-left: 5px;
 }
 
-.marcado{
+.marcado {
     text-decoration: line-through;
 }
 
-#marcado{
+#marcado {
     margin-left: 10px;
 }
 
-.text-tareas{
+.text-tareas {
     font-size: 24px;
     margin: 20px 0;
     color: #cc9364;
     border-bottom: 1px solid #cc9364;
 }
 
-@media (max-width: 600px){
+.ocultar{
+    display: none;
+}
 
-    .container{
+.container-eliminadas {
+    padding: 2em;
+    width: 55%;
+}
+
+.titulo-eliminadas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #cc9364;
+}
+
+.text-eliminadas {
+    font-size: 25px;
+    margin: 10px 0;
+    color: #cc9364;
+}
+
+.back{
+    font-size: 16px;
+    background-color: #cc9364;
+    border: none;
+    color: white;
+}
+
+.back:hover{
+    cursor: pointer;
+    color: black;
+}
+
+.li-eliminadas {
+    background-color: burlywood;
+}
+
+@media (max-width: 600px) {
+
+    .container {
         margin: 30px;
         padding: 0;
         flex-direction: column;
     }
-    
-    .tareaList{
+
+    .tareaList {
         margin-left: auto;
         margin-right: auto;
     }
-    
-    form{
+
+    form {
         display: flex;
         flex-direction: column;
     }
-    
-    .input-tarea{
+
+    .botones{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .input-tarea {
         padding: 15px;
     }
-    
-    .container-descripcion{
+
+    .container-descripcion {
         width: 80%;
     }
-    
-    .container-tareas{
+
+    .container-tareas {
         width: 92%;
         margin-top: 2px;
     }
-    
-    .incompletas{
+
+    .incompletas {
         width: 100%;
         margin-left: 33px;
     }
-    
-    li p{
+
+    li p {
         font-size: 14px;
     }
-    
-    li h4{
+
+    li h4 {
         margin: 5px;
         font-size: 19px;
     }
-    
-    .btn-add{
+
+    .btn-add {
         width: 125px;
         border-radius: 10px;
     }
-    
-    .empty{
+
+    .empty {
         color: darkslategrey;
         text-align: center;
     }
-    
-    .btn-delete{
+
+    .btn-delete {
         padding: 2px 8px;
         font-size: 1.2rem;
     }
-    
-    .container-options{
+
+    .container-options {
         display: flex;
         justify-content: space-around;
     }
-    
-    .checkbox{
+
+    .checkbox {
         font-size: 19px;
     }
-    
-    .text-prioridad{
+
+    .text-prioridad {
         font-size: 19px;
         padding: 0 14px;
     }
-    
-    .marcado{
+
+    .marcado {
         text-decoration: line-through;
     }
-    
-    #marcado{
+
+    #marcado {
         margin-left: 10px;
     }
-    
-    .text-tareas{
+
+    .text-tareas {
         font-size: 25px;
         margin: 10px 0;
+    }
+
+    .container-eliminadas {
+        padding: 1.8em;
+        width: 85%;
+    }
+
+    .titulo-eliminadas {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #cc9364;
+    }
+
+    .text-eliminadas {
+        font-size: 25px;
+        margin: 10px 0;
+        color: #cc9364;
+    }
+
+    .back{
+        font-size: 16px;
+        background-color: #cc9364;
+        border: none;
+        color: white;
+    }
+
+    .back:hover{
+        cursor: pointer;
+        color: black;
+    }
+
+    .li-eliminadas {
+        background-color: burlywood;
     }
 }

@@ -1,72 +1,147 @@
-const tituloTarea = document.querySelector('.titulo-tarea');
+//Referencias de inputs
+const tituloTarea = document.querySelector(".titulo-tarea");
 const descripcionTarea = document.querySelector(".descripcion-tarea");
-const addBtn = document.querySelector(".btn-add");
-const select = document.querySelector('select');
-const checkbox = document.getElementById('marcado');
+const select = document.querySelector("select");
+const checkbox = document.getElementById("marcado");
 
-addBtn.addEventListener('click', (e) => {
+//Contenedor de tareas pendientes y eliminadas
+const containerTareas = document.querySelector(".container-tareas");
+const containerEliminadas = document.querySelector(".container-eliminadas");
+
+//Referencia y evento agregar para tareas pendientes
+const addBtn = document.querySelector("#add");
+addBtn.addEventListener("click", (e) => {
     e.preventDefault();
-
+    
     const titleText = tituloTarea.value;
     const text = descripcionTarea.value;
     const prioridad = select.value;
     const prioridadTarea = prioridad.split(' ')[0];
     const colorLi = prioridad.split(' ')[1];
-
+    
     if(titleText != "" && text != ""){
+        if(btnTareasEliminadas.disabled){
+            intercambiarDisplay();
+            btnTareasEliminadas.disabled = false;
+        }
+        
         const li = document.createElement("li");
         li.style.backgroundColor = colorLi;
-
-        const h = document.createElement('h4');
+        
+        const h = document.createElement("h4");
         h.textContent = titleText;
-
+        
         const p = document.createElement("p");
         p.textContent = text;
-
-        const div = document.createElement('div');
-        div.classList.add('contenedor-li');
-
+        
+        const div = document.createElement("div");
+        div.classList.add("contenedor-li");
+        
         div.appendChild(h);
         div.appendChild(p);
-
+        
         li.appendChild(div);
-
+        
         const $padre = document.querySelector(`.p-${prioridadTarea}`);
         $padre.appendChild(li);
-
+        
         const empty = document.querySelector(`.empty-${prioridadTarea}`);
         li.appendChild(addDeleteBtn($padre,li,empty,prioridadTarea));
-
+        
         let checked = checkbox.checked;
-
+        
         if(checked){
-            p.classList.toggle('marcado');
+            p.classList.toggle("marcado");
             checkbox.checked = false;
         };
-
-        li.addEventListener('click', () => {
-            p.classList.toggle('marcado');
+        
+        li.addEventListener("click", () => {
+            p.classList.toggle("marcado");
         });
-
+        
         tituloTarea.value = "";
         descripcionTarea.value = "";
         empty.style.display = "none";
     }
 })
 
+//Array de tareas eliminadas y boton para eliminar 
+const tareasEliminadas = [];
 function addDeleteBtn(padre,hijo,empty,prioridadTarea) {
-    const button = document.createElement('button');
-    button.textContent = 'x';
-    button.classList.add('btn-delete');
+    const button = document.createElement("button");
+    button.textContent = "x";
+    button.classList.add("btn-delete");
 
-    button.addEventListener('click', () => {
+    button.addEventListener("click", () => {
+        let titulo = hijo.querySelector("h4").textContent;
+        let descripcion = hijo.querySelector("p").textContent;
+        
+        let tareaEliminada = {
+            nombre: titulo,
+            informacion: descripcion
+        };    
+        tareasEliminadas.push(tareaEliminada);
+    
         padre.removeChild(hijo);
-        const cantNodos = document.querySelectorAll(`.p-${prioridadTarea} li`);
 
+        const cantNodos = document.querySelectorAll(`.p-${prioridadTarea} li`);
         if (cantNodos.length === 0) {
             empty.style.display = "block";
         }
     })
-
     return button;
 }
+
+//Referencia y evento para ver tareas eliminadas
+const btnTareasEliminadas = document.querySelector("#delete");
+btnTareasEliminadas.addEventListener("click", (e) => {
+    e.preventDefault();
+    intercambiarDisplay();
+
+    if(tareasEliminadas != 0){
+        limpiarContainer();
+    }
+
+    const listaContainer = document.querySelector(".tareasEliminadas");
+    tareasEliminadas.forEach( tarea => {
+        const li = document.createElement("li");
+        li.classList.add("li-eliminadas");
+        
+        const h = document.createElement("h4");
+        h.textContent = tarea.nombre;
+        
+        const p = document.createElement("p");
+        p.textContent = tarea.informacion;
+        
+        const div = document.createElement("div");
+        div.appendChild(h);
+        div.appendChild(p);
+        
+        li.appendChild(div);
+        listaContainer.appendChild(li);
+    })
+    btnTareasEliminadas.disabled = true;
+})
+
+//Funcion para limpiar contenedor de tareas eliminadas
+function limpiarContainer(){
+    const container = document.querySelector('.tareasEliminadas');
+    const tareasEliminadas = document.querySelectorAll('.li-eliminadas');
+
+    tareasEliminadas.forEach( nodo => {
+        container.removeChild(nodo);
+    })
+}   
+
+//Referencia y evento para volver a las tareas pendientes
+const btnBack = document.querySelector(".back");
+btnBack.addEventListener("click", (e) => {
+    e.preventDefault();
+    intercambiarDisplay();
+    btnTareasEliminadas.disabled = false;
+})
+
+function intercambiarDisplay(){
+    containerEliminadas.classList.toggle("ocultar");
+    containerTareas.classList.toggle("ocultar");
+} 

@@ -19,7 +19,11 @@
                 <form>
                     <input class="input-tarea titulo-tarea" type="text" placeholder="Titulo tarea...">
                     <input class="input-tarea descripcion-tarea" type="text" placeholder="Descripcion tarea...">
-                    <button class="btn-add">agregar</button>
+                    
+                    <div class="botones">
+                        <button class="btn-add" id="add">agregar</button>
+                        <button class="btn-add" id="delete">delete</button>
+                    </div>
                 </form>
             </div>
             <!-- aca se maneja la prioridad -->
@@ -72,7 +76,20 @@
                     </div>
                 </div>
             </div>
-            
+        </div>
+        <!-- Contenedor de tareas eliminadas -->
+        <div class="container-eliminadas ocultar">
+            <div class="titulo-eliminadas">
+                <h4 class="text-eliminadas">Tareas eliminadas</h4>
+                <button class="back">X</button>
+            </div>
+                <div>
+                    <ul class="tareasEliminadas">
+                        <li class="li-eliminadas">
+                           
+                        </li>
+                    </ul>
+                </div> 
         </div>
     </div>
 
