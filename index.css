@@ -260,7 +260,6 @@ select {
 
     .empty {
         color: darkslategrey;
-        text-align: center;
     }
 
     .btn-delete {
