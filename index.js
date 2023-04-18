@@ -13,53 +13,38 @@ const emptyEliminadas = document.querySelector(".empty");
 const addBtn = document.querySelector("#add");
 addBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    
+
     const titleText = tituloTarea.value;
     const text = descripcionTarea.value;
     const prioridad = select.value;
     const prioridadTarea = prioridad.split(' ')[0];
     const colorLi = prioridad.split(' ')[1];
-    
-    if(titleText != "" && text != ""){
-        if(btnTareasEliminadas.disabled){
+
+    if (titleText != "" && text != "") {
+        if (btnTareasEliminadas.disabled) {
             intercambiarDisplay();
             btnTareasEliminadas.disabled = false;
         }
-        
-        const li = document.createElement("li");
-        li.style.backgroundColor = colorLi;
-        
-        const h = document.createElement("h4");
-        h.textContent = titleText;
-        
-        const p = document.createElement("p");
-        p.textContent = text;
-        
-        const div = document.createElement("div");
-        div.classList.add("contenedor-li");
-        
-        div.appendChild(h);
-        div.appendChild(p);
-        
-        li.appendChild(div);
-        
+
+        let li = crearLi(colorLi, titleText, text);
         const $padre = document.querySelector(`.p-${prioridadTarea}`);
         $padre.appendChild(li);
-        
+
         const empty = document.querySelector(`.empty-${prioridadTarea}`);
-        li.appendChild(addDeleteBtn($padre,li,empty,prioridadTarea));
-        
+        li.appendChild(addDeleteBtn($padre, li, empty, prioridadTarea));
+
         let checked = checkbox.checked;
-        
-        if(checked){
-            p.classList.toggle("marcado");
+
+        if (checked) {
+            
+            li.querySelector("p").classList.toggle("marcado");
             checkbox.checked = false;
         };
-        
+
         li.addEventListener("click", () => {
-            p.classList.toggle("marcado");
+            li.querySelector("p").classList.toggle("marcado");
         });
-        
+
         tituloTarea.value = "";
         descripcionTarea.value = "";
         empty.style.display = "none";
@@ -68,7 +53,7 @@ addBtn.addEventListener("click", (e) => {
 
 //Array de tareas eliminadas y boton para eliminar 
 const tareasEliminadas = [];
-function addDeleteBtn(padre,hijo,empty,prioridadTarea) {
+function addDeleteBtn(padre, hijo, empty, prioridadTarea) {
     const button = document.createElement("button");
     button.textContent = "x";
     button.classList.add("btn-delete");
@@ -78,13 +63,13 @@ function addDeleteBtn(padre,hijo,empty,prioridadTarea) {
 
         let titulo = hijo.querySelector("h4").textContent;
         let descripcion = hijo.querySelector("p").textContent;
-        
+
         let tareaEliminada = {
             nombre: titulo,
             informacion: descripcion
-        };    
+        };
         tareasEliminadas.push(tareaEliminada);
-    
+
         padre.removeChild(hijo);
 
         const cantNodos = document.querySelectorAll(`.p-${prioridadTarea} li`);
@@ -101,40 +86,50 @@ btnTareasEliminadas.addEventListener("click", (e) => {
     e.preventDefault();
     intercambiarDisplay();
 
-    if(tareasEliminadas != 0){
+    if (tareasEliminadas != 0) {
         limpiarContainer();
     }
 
     const listaContainer = document.querySelector(".tareasEliminadas");
-    tareasEliminadas.forEach( tarea => {
-        const li = document.createElement("li");
+    tareasEliminadas.forEach(tarea => {
+        let li = crearLi("burlywood", tarea.nombre, tarea.informacion);
         li.classList.add("li-eliminadas");
-        
-        const h = document.createElement("h4");
-        h.textContent = tarea.nombre;
-        
-        const p = document.createElement("p");
-        p.textContent = tarea.informacion;
-        
-        const div = document.createElement("div");
-        div.appendChild(h);
-        div.appendChild(p);
-        
-        li.appendChild(div);
+
         listaContainer.appendChild(li);
     })
     btnTareasEliminadas.disabled = true;
 })
 
+//Funcion para crear elemento li
+function crearLi(bgcColor, titulo, descripcion) {
+    const li = document.createElement("li");
+    li.style.backgroundColor = bgcColor;
+
+    const h = document.createElement("h4");
+    h.textContent = titulo;
+
+    const p = document.createElement("p");
+    p.textContent = descripcion;
+
+    const div = document.createElement("div");
+    div.classList.add("contenedor-li");
+
+    div.appendChild(h);
+    div.appendChild(p);
+
+    li.appendChild(div);
+    return li;
+}
+
 //Funcion para limpiar contenedor de tareas eliminadas
-function limpiarContainer(){
+function limpiarContainer() {
     const container = document.querySelector('.tareasEliminadas');
     const tareasEliminadas = document.querySelectorAll('.li-eliminadas');
 
-    tareasEliminadas.forEach( nodo => {
+    tareasEliminadas.forEach(nodo => {
         container.removeChild(nodo);
     })
-}   
+}
 
 //Referencia y evento para volver a las tareas pendientes
 const btnBack = document.querySelector(".back");
@@ -144,7 +139,7 @@ btnBack.addEventListener("click", (e) => {
     btnTareasEliminadas.disabled = false;
 })
 
-function intercambiarDisplay(){
+function intercambiarDisplay() {
     containerEliminadas.classList.toggle("ocultar");
     containerTareas.classList.toggle("ocultar");
 } 
