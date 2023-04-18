@@ -7,6 +7,7 @@ const checkbox = document.getElementById("marcado");
 //Contenedor de tareas pendientes y eliminadas
 const containerTareas = document.querySelector(".container-tareas");
 const containerEliminadas = document.querySelector(".container-eliminadas");
+const emptyEliminadas = document.querySelector(".empty");
 
 //Referencia y evento agregar para tareas pendientes
 const addBtn = document.querySelector("#add");
@@ -73,6 +74,8 @@ function addDeleteBtn(padre,hijo,empty,prioridadTarea) {
     button.classList.add("btn-delete");
 
     button.addEventListener("click", () => {
+        emptyEliminadas.style.display = "none";
+
         let titulo = hijo.querySelector("h4").textContent;
         let descripcion = hijo.querySelector("p").textContent;
         
